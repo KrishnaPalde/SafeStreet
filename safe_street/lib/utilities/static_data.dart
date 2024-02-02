@@ -212,4 +212,5 @@ class StaticData {
   }
 
   static String selectedCountry = '';
+  static TextEditingController selectedCity = TextEditingController();
 }
