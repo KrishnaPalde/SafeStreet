@@ -4,6 +4,8 @@
 ### Overview
 SafeStreet is an app that allows members of marginalized groups to share opinions regarding safety anonymously.
 
+<img src="WhatsApp Image 2024-02-03 at 00.29.31_61373a96.jpg" alt="SafeStreet" width="50%">
+
 **Features:**
 -  *User-Driven Safety Scores:* Rate locations, clinics, police stations, and workplaces based on your experience, contributing to community-driven safety insights.
 - *Map View:* Quickly find and explore safety scores of various locations within your area.
