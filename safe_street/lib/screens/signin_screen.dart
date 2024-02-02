@@ -3,6 +3,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:safe_street/screens/registration_splash_screen.dart';
 import 'package:safe_street/utilities/Color.dart';
+import 'package:safe_street/utilities/database_functions.dart';
 
 class SignInScreen extends StatefulWidget {
   static const routeName = '/signin-screen';
@@ -36,14 +37,16 @@ class _SignInScreenState extends State<SignInScreen> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,
                 ),
-                Container(
-                  width: MediaQuery.of(context).size.width * 0.95,
-                  height: MediaQuery.of(context).size.height * 0.4,
-                  decoration: const BoxDecoration(
-                      image: DecorationImage(
-                          image:
-                              AssetImage('assets/images/safestreet_logo.png'),
-                          fit: BoxFit.fill)),
+                Center(
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    height: MediaQuery.of(context).size.height * 0.35,
+                    decoration: const BoxDecoration(
+                        image: DecorationImage(
+                            image:
+                                AssetImage('assets/images/safestreet_logo.png'),
+                            fit: BoxFit.fill)),
+                  ),
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.01,
@@ -93,7 +96,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                     fontWeight: FontWeight.bold),
                                 enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                        color: MaterialColor(0xFF066fd9, color),
+                                        color: MaterialColor(0xFFFD3013, color),
                                         width: 3)),
                                 contentPadding: const EdgeInsets.symmetric(
                                     vertical: 8, horizontal: 2)),
@@ -135,7 +138,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                     fontWeight: FontWeight.bold),
                                 enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                        color: MaterialColor(0xFF066fd9, color),
+                                        color: MaterialColor(0xFFFD3013, color),
                                         width: 3)),
                                 contentPadding: EdgeInsets.symmetric(
                                     vertical: 8, horizontal: 2)),
@@ -158,7 +161,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       Checkbox(
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(4)),
-                          activeColor: MaterialColor(0xFF066FD9, color),
+                          activeColor: MaterialColor(0xFFFD3013, color),
                           value: _isRememberMe,
                           onChanged: (val) {
                             setState(() {
@@ -191,9 +194,8 @@ class _SignInScreenState extends State<SignInScreen> {
                               int status;
                               if (_email.text.isNotEmpty) {
                                 if (_password.text.isNotEmpty) {
-                                  // status = await signInUserToTravelBuddy(
-                                  //     _email.text, _password.text);
-                                  status = 0;
+                                  status = await signInUserToSafeStreet(
+                                      _email.text, _password.text);
                                   if (status == -1) {
                                     Fluttertoast.showToast(
                                         msg: "User Not Found");
@@ -201,6 +203,10 @@ class _SignInScreenState extends State<SignInScreen> {
                                   if (status == -2) {
                                     Fluttertoast.showToast(
                                         msg: "Invalid Credentials");
+                                  }
+                                  if (status == -3) {
+                                    Fluttertoast.showToast(
+                                        msg: "Technical Error");
                                   }
                                   if (status == 0) {
                                     Fluttertoast.showToast(
@@ -221,7 +227,7 @@ class _SignInScreenState extends State<SignInScreen> {
                               }
                             },
                             style: ElevatedButton.styleFrom(
-                              primary: MaterialColor(0xFF066fd9,
+                              primary: MaterialColor(0xFFFD3013,
                                   color), // Set your desired background color
                             ),
                             child: Text(

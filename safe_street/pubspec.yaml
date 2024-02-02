@@ -42,6 +42,7 @@ dependencies:
   fluttertoast: ^8.2.1
   google_fonts: ^4.0.3
   material_text_fields: ^1.0.3
+  firebase_auth: ^4.17.3
 
 dev_dependencies:
   flutter_test:

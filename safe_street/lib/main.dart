@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:safe_street/firebase_options.dart';
 import 'package:safe_street/screens/registration_splash_screen.dart';
 import 'package:safe_street/screens/signin_screen.dart';
+import 'package:safe_street/screens/signup_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    name: "safe_street",
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(const MyApp());
@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
         SignInScreen.routeName: (context) => SignInScreen(),
         RegistrationSplashScreen.routeName: (context) =>
             RegistrationSplashScreen(),
+        SignUpScreen.routeName: (context) => SignUpScreen(),
       },
     );
   }
