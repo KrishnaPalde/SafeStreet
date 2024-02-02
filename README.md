@@ -13,6 +13,15 @@ SafeStreet is an app that allows members of marginalized groups to share opinion
 - Voting System: Upvote or downvote reviews to reflect community agreement and highlight valuable information.
 - Anonymity & Security: Protect your privacy while ensuring accountability through discreet user verification.
 
-**Interface:**
-
 **Tech Stack:**
+- Flutter
+- Dart
+- Google APIs
+- Firebase 
+
+### Credits
+- Krishna Padle
+- Hriddhit Datta
+- Darshan Banait
+- Aryan Tijare
+- Chaitanya Dhumal
