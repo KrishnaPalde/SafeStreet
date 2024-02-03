@@ -1,27 +1,39 @@
 class User {
-  String uId; // Update the field name here
+  String uId;
+  String fullName;
+  String emailId;
+  String gender;
+  int age;
   String aadharNo;
-  // Add other details as needed
 
   User({
-    required this.uId, // Update the parameter name here
+    required this.uId,
+    required this.fullName,
+    required this.emailId,
+    required this.gender,
+    required this.age,
     required this.aadharNo,
-    // Add other details as needed
   });
 
   factory User.fromMap(Map<String, dynamic> data) {
     return User(
-      uId: data['uid'],
-      aadharNo: data['aadhar_no'],
-      // Map other details as needed
+      uId: data['uId'],
+      fullName: data['fullName'],
+      emailId: data['emailId'],
+      gender: data['gender'],
+      age: data['age'],
+      aadharNo: data['aadharNo'],
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
-      'uid': uId,
-      'aadhar_no': aadharNo,
-      // Add other details as needed
+      'uId': uId,
+      'fullName': fullName,
+      'emailId': emailId,
+      'gender': gender,
+      'age': age,
+      'aadharNo': aadharNo,
     };
   }
 }
