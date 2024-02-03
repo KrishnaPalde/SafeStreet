@@ -5,6 +5,8 @@ class User {
   String gender;
   int age;
   String aadharNo;
+  String country;
+  String city;
 
   User({
     required this.uId,
@@ -13,6 +15,8 @@ class User {
     required this.gender,
     required this.age,
     required this.aadharNo,
+    required this.country,
+    required this.city,
   });
 
   factory User.fromMap(Map<String, dynamic> data) {
@@ -23,6 +27,8 @@ class User {
       gender: data['gender'],
       age: data['age'],
       aadharNo: data['aadharNo'],
+      country: data['country'],
+      city: data['city'],
     );
   }
 
@@ -34,6 +40,8 @@ class User {
       'gender': gender,
       'age': age,
       'aadharNo': aadharNo,
+      'country': country,
+      'city': city,
     };
   }
 }
