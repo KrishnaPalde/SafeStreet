@@ -97,6 +97,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.6"
+  dio:
+    dependency: transitive
+    description:
+      name: dio
+      sha256: "797e1e341c3dd2f69f2dad42564a6feff3bfb87187d05abb93b9609e6f1645c3"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.4.0"
   fake_async:
     dependency: transitive
     description:
@@ -214,6 +222,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_google_maps_webservices:
+    dependency: "direct main"
+    description:
+      name: flutter_google_maps_webservices
+      sha256: "0a1ad0619d5a8ec37b4a8a47776c26fe7491f5a3b8031a5191607ea1a4996ead"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.1"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -336,6 +352,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.5.4+3"
+  google_places_flutter:
+    dependency: "direct main"
+    description:
+      name: google_places_flutter
+      sha256: bee1bea5d3930daca64323d449114e14bbebf89fb746f508fbfc4291bf3d89a3
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.7"
   html:
     dependency: transitive
     description:
@@ -384,6 +408,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.4"
+  json_annotation:
+    dependency: transitive
+    description:
+      name: json_annotation
+      sha256: b10a7b2ff83d83c777edba3c6a0f97045ddadd56c944e1a23a3fdf43a1bf4467
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.8.1"
   lints:
     dependency: transitive
     description:
@@ -520,6 +552,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.8"
+  rxdart:
+    dependency: transitive
+    description:
+      name: rxdart
+      sha256: "0c7c0cedd93788d996e33041ffecda924cc54389199cde4e6a34b440f50044cb"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.27.7"
   sanitize_html:
     dependency: transitive
     description:

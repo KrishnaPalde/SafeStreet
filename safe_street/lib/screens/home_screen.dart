@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:safe_street/models/maps_function.dart';
+import 'package:safe_street/utilities/static_data.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -13,7 +14,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   late GoogleMapController mapController;
 
-  final LatLng _center = const LatLng(45.521563, -122.677433);
+  LatLng _initiale = const LatLng(45.521563, -122.677433);
 
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
@@ -22,19 +23,30 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GoogleMap(
-        onTap: (latLang) async {
-          print("ontap");
-          var place = await MapFunctions.getPlaceName(
-              latLang.latitude, latLang.longitude);
-          print("LOCATION: " + place.toString());
-        },
-        onMapCreated: _onMapCreated,
-        initialCameraPosition: CameraPosition(
-          target: _center,
-          zoom: 11.0,
-        ),
-      ),
+      body: FutureBuilder(
+          future: MapFunctions.getLatLngFromAddress(
+              "${StaticData.currentUser.city}, ${StaticData.currentUser.country}"),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              final data = snapshot.data;
+              _initiale = data!;
+              return GoogleMap(
+                onTap: (latLang) async {
+                  print("ontap");
+                  var place = await MapFunctions.getPlaceName(
+                      latLang.latitude, latLang.longitude);
+                  print("LOCATION: " + place.toString());
+                },
+                onMapCreated: _onMapCreated,
+                initialCameraPosition: CameraPosition(
+                  target: _initiale,
+                  zoom: 11.0,
+                ),
+              );
+            } else {
+              return Center(child: CircularProgressIndicator());
+            }
+          }),
     );
   }
 }

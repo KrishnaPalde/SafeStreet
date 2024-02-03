@@ -7,6 +7,8 @@ import 'package:safe_street/screens/home_screen.dart';
 import 'package:safe_street/screens/registration_splash_screen.dart';
 import 'package:safe_street/screens/signin_screen.dart';
 import 'package:safe_street/screens/signup_screen.dart';
+import 'package:safe_street/utilities/database_functions.dart';
+import 'package:safe_street/utilities/static_data.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,7 +17,10 @@ void main() async {
   );
   bool isUserLoggedIn;
   if (FirebaseAuth.instance.currentUser != null) {
+    print(FirebaseAuth.instance.currentUser!.uid);
     isUserLoggedIn = true;
+    StaticData.currentUser = await getUserDetailsFromFirebase();
+    print(StaticData.currentUser.toString());
   } else {
     isUserLoggedIn = false;
   }
@@ -29,6 +34,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    print(isUser);
     return MaterialApp(
       title: 'Safe Street',
       debugShowCheckedModeBanner: false,
