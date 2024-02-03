@@ -1,11 +1,13 @@
 class Vote {
   String voteId;
   String experienceId;
+  String uId;
   String voteType;
 
   Vote({
     required this.voteId,
     required this.experienceId,
+    required this.uId,
     required this.voteType,
   });
 
@@ -13,6 +15,7 @@ class Vote {
     return Vote(
       voteId: data['voteId'],
       experienceId: data['experienceId'],
+      uId: data['uId'],
       voteType: data['vote_type'],
     );
   }
@@ -21,6 +24,7 @@ class Vote {
     return {
       'voteId': voteId,
       'experienceId': experienceId,
+      'uId': uId,
       'vote_type': voteType,
     };
   }

@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:safe_street/models/experience.dart';
 import 'package:safe_street/models/user.dart';
+import 'package:safe_street/models/score.dart'; 
 
 class ProfileScreen extends StatelessWidget {
   final User currentUser;
+  final List<Score> userScores;
+  final List<Experience> userExperiences;
 
-  const ProfileScreen({Key? key, required this.currentUser}) : super(key: key);
+  const ProfileScreen({
+    Key? key,
+    required this.currentUser,
+    required this.userScores,
+    required this.userExperiences,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,55 +34,60 @@ class ProfileScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            // Display user details
             Text(
               currentUser.fullName,
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 8),
             Text('Email: ${currentUser.emailId}'),
-            if (currentUser.gender != null) ...[
-              SizedBox(height: 8),
-              Text('Gender: ${currentUser.gender}'),
-            ],
-            if (currentUser.age != null) ...[
-              SizedBox(height: 8),
-              Text('Age: ${currentUser.age}'),
-            ],
-            SizedBox(height: 8),
-            Text('Aadhar No: ${currentUser.aadharNo}'),
-            SizedBox(height: 8),
-            Text('Country: ${currentUser.country}'),
-            SizedBox(height: 8),
-            Text('City: ${currentUser.city}'),
+            // Display other user details...
+
             SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () {
-                // Navigate to the scores screen
-              },
-              style: ElevatedButton.styleFrom(
-                foregroundColor: Theme.of(context).primaryColor, backgroundColor: Colors.transparent,
-              ),
-              child: Text('Your Scores'),
-            ),
-            SizedBox(height: 8),
-            ElevatedButton(
-              onPressed: () {
-                // Navigate to the settings screen
-              },
-              style: ElevatedButton.styleFrom(
-                foregroundColor: Theme.of(context).primaryColor, backgroundColor: Colors.transparent,
-              ),
-              child: Text('Settings'),
-            ),
-            SizedBox(height: 8),
+
+            // Logout button
             ElevatedButton(
               onPressed: () {
                 // Implement logout logic
               },
-              style: ElevatedButton.styleFrom(
-                foregroundColor: Theme.of(context).primaryColor, backgroundColor: Colors.transparent,
-              ),
               child: Text('Logout'),
+            ),
+
+            SizedBox(height: 16),
+
+            // Your Scores section
+            Text(
+              'Your Scores',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 8),
+
+            // Display user scores and associated experiences
+            ListView.builder(
+              shrinkWrap: true,
+              itemCount: userExperiences.length,
+              itemBuilder: (context, index) {
+                final experience = userExperiences[index];
+
+                // Find the corresponding score
+                final correspondingScore = userScores.firstWhere(
+                  (score) => score.scoreId == experience.scoreId,
+                  orElse: () => Score(), // Provide a default value if not found
+                );
+
+                // Display score and experience details
+                return ListTile(
+                  title: Text('Score: ${correspondingScore.score} out of 5 stars'),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Location: ${correspondingScore.location}'),
+                      Text('Experience: ${experience.experienceText}'),
+                      // Add other details as needed...
+                    ],
+                  ),
+                );
+              },
             ),
           ],
         ),
