@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:safe_street/models/maps_function.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -22,6 +23,12 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: GoogleMap(
+        onTap: (latLang) async {
+          print("ontap");
+          var place = await MapFunctions.getPlaceName(
+              latLang.latitude, latLang.longitude);
+          print("LOCATION: " + place.toString());
+        },
         onMapCreated: _onMapCreated,
         initialCameraPosition: CameraPosition(
           target: _center,
