@@ -4,9 +4,11 @@ import 'package:safe_street/models/user.dart';
 import 'package:safe_street/models/score.dart'; 
 
 class ProfileScreen extends StatelessWidget {
-  final User currentUser;
+  final SafeStreetUser currentUser;
+
+  // need to write code to generate following two lists
   final List<Score> userScores;
-  final List<Experience> userExperiences;
+  final List<Experience> userExperiences; 
 
   const ProfileScreen({
     Key? key,
@@ -82,7 +84,7 @@ class ProfileScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text('Location: ${correspondingScore.location}'),
-                      Text('Experience: ${experience.experienceText}'),
+                      experience.experienceText.isNotEmpty ? Text('Experience: ${experience.experienceText}') : Container(),
                       // Add other details as needed...
                     ],
                   ),
