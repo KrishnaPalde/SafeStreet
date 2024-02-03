@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:safe_street/screens/bottom_appbar.dart';
 import 'package:safe_street/screens/registration_splash_screen.dart';
 import 'package:safe_street/utilities/Color.dart';
 import 'package:safe_street/utilities/database_functions.dart';
+import 'package:safe_street/widget/custom_progress_indicator.dart';
 
 class SignInScreen extends StatefulWidget {
   static const routeName = '/signin-screen';
@@ -26,7 +28,7 @@ class _SignInScreenState extends State<SignInScreen> {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           child: Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
@@ -140,7 +142,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                     borderSide: BorderSide(
                                         color: MaterialColor(0xFFFD3013, color),
                                         width: 3)),
-                                contentPadding: EdgeInsets.symmetric(
+                                contentPadding: const EdgeInsets.symmetric(
                                     vertical: 8, horizontal: 2)),
                           )),
                     ],
@@ -194,8 +196,10 @@ class _SignInScreenState extends State<SignInScreen> {
                               int status;
                               if (_email.text.isNotEmpty) {
                                 if (_password.text.isNotEmpty) {
+                                  CustomProgressIndicator().show(context);
                                   status = await signInUserToSafeStreet(
                                       _email.text, _password.text);
+                                  CustomProgressIndicator().dismiss();
                                   if (status == -1) {
                                     Fluttertoast.showToast(
                                         msg: "User Not Found");
@@ -211,11 +215,12 @@ class _SignInScreenState extends State<SignInScreen> {
                                   if (status == 0) {
                                     Fluttertoast.showToast(
                                         msg: "Successfully Logged In");
-                                    // Navigator.push(
-                                    //     context,
-                                    //     MaterialPageRoute(
-                                    //       builder: (context) => MainBottomBar(),
-                                    //     ));
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              const CustomBottomAppBar(),
+                                        ));
                                   }
                                 } else {
                                   Fluttertoast.showToast(
@@ -344,8 +349,8 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
                     TextButton(
                       onPressed: () {
-                        Navigator.of(context).pushReplacementNamed(
-                            RegistrationSplashScreen.routeName);
+                        Navigator.of(context)
+                            .pushNamed(RegistrationSplashScreen.routeName);
                       },
                       child: Text(
                         "Sign Up",
