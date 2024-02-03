@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class StaticData {
   static List<String> countryNames = [
@@ -213,4 +214,5 @@ class StaticData {
 
   static String selectedCountry = '';
   static TextEditingController selectedCity = TextEditingController();
+  Set<Marker> markers = Set();
 }
