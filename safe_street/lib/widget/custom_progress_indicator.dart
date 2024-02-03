@@ -9,6 +9,7 @@ class CustomProgressIndicator {
 
   factory CustomProgressIndicator() {
     return _singleton;
+
   }
 
   bool getDisplayStatus() {
@@ -20,6 +21,7 @@ class CustomProgressIndicator {
   show(BuildContext context) {
     if (isDisplayed) {
       return;
+
     }
     showDialog<void>(
         context: context,
