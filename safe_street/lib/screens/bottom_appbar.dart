@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:safe_street/screens/account_screen.dart';
+import 'package:safe_street/screens/profile_screen.dart';
 import 'package:safe_street/screens/home_screen.dart';
 
 class CustomBottomAppBar extends StatefulWidget {
@@ -25,7 +25,7 @@ class _CustomBottomAppBarState extends State<CustomBottomAppBar> {
   void initState() {
     _widgetOptions = [
       HomeScreen(),
-      AccountScreen(),
+      ProfileScreen(), // need to address parameter issue
     ];
     super.initState();
   }
