@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:safe_street/models/user.dart';
 
 class StaticData {
   static List<String> countryNames = [
@@ -213,4 +215,7 @@ class StaticData {
 
   static String selectedCountry = '';
   static TextEditingController selectedCity = TextEditingController();
+  static Set<Marker> markers = Set();
+  static SafeStreetUser currentUser =
+      SafeStreetUser('', '', '', '', '', '', '', '');
 }

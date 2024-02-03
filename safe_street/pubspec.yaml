@@ -44,6 +44,10 @@ dependencies:
   material_text_fields: ^1.0.3
   firebase_auth: ^4.17.3
   google_maps_flutter: ^2.5.3
+  location: ^5.0.3
+  geocoding: ^2.1.1
+  google_places_flutter: ^2.0.7
+  flutter_google_maps_webservices: ^1.1.1
 
 dev_dependencies:
   flutter_test:
