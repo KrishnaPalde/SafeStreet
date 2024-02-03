@@ -1,47 +1,48 @@
-class User {
+import 'package:firebase_auth/firebase_auth.dart';
+
+class SafeStreetUser {
   String uId;
   String fullName;
   String emailId;
   String gender;
-  int age;
+  String age;
   String aadharNo;
   String country;
   String city;
 
-  User({
-    required this.uId,
-    required this.fullName,
-    required this.emailId,
-    required this.gender,
-    required this.age,
-    required this.aadharNo,
-    required this.country,
-    required this.city,
-  });
+  SafeStreetUser(
+    this.uId,
+    this.fullName,
+    this.emailId,
+    this.gender,
+    this.age,
+    this.aadharNo,
+    this.country,
+    this.city,
+  );
 
-  factory User.fromMap(Map<String, dynamic> data) {
-    return User(
-      uId: data['uId'],
-      fullName: data['fullName'],
-      emailId: data['emailId'],
-      gender: data['gender'],
-      age: data['age'],
-      aadharNo: data['aadharNo'],
-      country: data['country'],
-      city: data['city'],
-    );
-  }
+  factory SafeStreetUser.fromJson(Map<String, dynamic> json) => SafeStreetUser(
+        json['uid'] ?? "",
+        json['fullname'] ?? "",
+        json['emailid'] ?? "",
+        json['gender'] ?? "",
+        json['age'] ?? "",
+        json['adhaarnumber'] ?? "",
+        json['country'] ?? "",
+        json['city'] ?? "",
+      );
 
-  Map<String, dynamic> toMap() {
-    return {
-      'uId': uId,
-      'fullName': fullName,
-      'emailId': emailId,
-      'gender': gender,
-      'age': age,
-      'aadharNo': aadharNo,
-      'country': country,
-      'city': city,
-    };
-  }
+  Map<String, dynamic> toJson() => _SafeStreetUserToJson(this);
+
+  Map<String, dynamic> _SafeStreetUserToJson(SafeStreetUser instance) =>
+      <String, dynamic>{
+        'uid': FirebaseAuth.instance.currentUser!.uid,
+        'name': instance.fullName,
+        'emailid': instance.emailId,
+        'gender': instance.gender,
+        'age': instance.age,
+        'adhaarnumber': instance.aadharNo,
+        'country': instance.country,
+        'city': instance.city,
+      };
 }
