@@ -25,7 +25,7 @@ class _CustomBottomAppBarState extends State<CustomBottomAppBar> {
   void initState() {
     _widgetOptions = [
       HomeScreen(),
-      AccountScreen(),
+      AccountSettingScreen(),
     ];
     super.initState();
   }
@@ -43,8 +43,8 @@ class _CustomBottomAppBarState extends State<CustomBottomAppBar> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle_rounded),
-            label: 'Account',
+            icon: Icon(Icons.settings),
+            label: 'Menu',
           ),
         ],
         currentIndex: _selectedIndex,

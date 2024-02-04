@@ -5,6 +5,7 @@ import 'package:safe_street/firebase_options.dart';
 import 'package:safe_street/screens/bottom_appbar.dart';
 import 'package:safe_street/screens/home_screen.dart';
 import 'package:safe_street/screens/registration_splash_screen.dart';
+import 'package:safe_street/screens/score_detail_screen.dart';
 import 'package:safe_street/screens/signin_screen.dart';
 import 'package:safe_street/screens/signup_screen.dart';
 import 'package:safe_street/utilities/database_functions.dart';
@@ -49,6 +50,7 @@ class MyApp extends StatelessWidget {
             RegistrationSplashScreen(),
         SignUpScreen.routeName: (context) => SignUpScreen(),
         HomeScreen.routename: (context) => HomeScreen(),
+        ScoreDetailsScreen.routeName: (context) => ScoreDetailsScreen()
       },
     );
   }

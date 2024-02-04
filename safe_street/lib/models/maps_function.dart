@@ -2,7 +2,8 @@ import 'package:geocoding/geocoding.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapFunctions {
-  static Future<String> getPlaceName(double latitude, double longitude) async {
+  static Future<Map<String, String?>> getPlaceName(
+      double latitude, double longitude) async {
     // try {
     //   List<Placemark> placemarks =
     //       await placemarkFromCoordinates(latitude, longitude);
@@ -28,26 +29,28 @@ class MapFunctions {
 
       if (placemarks.isNotEmpty) {
         Placemark first = placemarks.first;
-        String placeDetails = 'Name: ${first.name}\n'
-            'Thoroughfare: ${first.thoroughfare}\n'
-            'SubThoroughfare: ${first.subThoroughfare}\n'
-            'Locality: ${first.locality}\n'
-            'SubLocality: ${first.subLocality}\n'
-            'AdministrativeArea: ${first.administrativeArea}\n'
-            'SubAdministrativeArea: ${first.subAdministrativeArea}\n'
-            'Country: ${first.country}\n'
-            'PostalCode: ${first.postalCode}';
+        Map<String, String?> placeDetails = {
+          'Name': first.name ?? "",
+          'Thoroughfare': first.thoroughfare ?? "",
+          'SubThoroughfare': first.subThoroughfare ?? "",
+          'Locality': first.locality ?? "",
+          'SubLocality': first.subLocality ?? "",
+          'AdministrativeArea': first.administrativeArea ?? "",
+          '[SubAdministrativeArea]': first.subAdministrativeArea,
+          'Country': first.country ?? "",
+          'PostalCode': first.postalCode ?? "",
+        };
 
         print(placeDetails);
         // You can use placeDetails as needed in your app
         return placeDetails;
       } else {
         print('No placemarks found');
-        return '';
+        return {};
       }
     } catch (e) {
       print('Error retrieving placemark: $e');
-      return '';
+      return {};
     }
   }
 

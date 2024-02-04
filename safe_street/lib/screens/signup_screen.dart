@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:safe_street/screens/bottom_appbar.dart';
 import 'package:safe_street/screens/signin_screen.dart';
 import 'package:safe_street/utilities/Color.dart';
 import 'package:safe_street/utilities/database_functions.dart';
@@ -355,11 +356,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     if (status == 0) {
                                       Fluttertoast.showToast(
                                           msg: "Successfully Sign In");
-                                      // Navigator.push(
-                                      //     context,
-                                      //     MaterialPageRoute(
-                                      //       builder: (context) => MainBottomBar(),
-                                      //     ));
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                CustomBottomAppBar(),
+                                          ));
                                     }
                                   } else {
                                     Fluttertoast.showToast(
