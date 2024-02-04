@@ -6,7 +6,7 @@ SafeStreet empowers marginalized groups by anonymously rating safety at various 
 
 SafeStreet empowers marginalized groups by enabling anonymous sharing of safety details and ratings for solo travel, healthcare inclusivity, responsive police stations, and workplace treatment of specific groups.
 
-
+[Youtube Link: ](https://youtu.be/AfTe1grTLxk)
 
 ### Features:
 
@@ -15,6 +15,16 @@ SafeStreet empowers marginalized groups by enabling anonymous sharing of safety 
 - *Verified Reviews:* Share detailed experiences anonymously, ensuring credibility through user verification.
 - **Voting System:** Upvote or downvote reviews to reflect community agreement and highlight valuable information.
 - *Anonymity & Security:* Protect your privacy while ensuring accountability through discreet user verification.
+
+### Instructions:
+
+1. Download the .apk file from  releases
+2.  Navigate to Setting > Security.
+3. Check the option "Unknown sources".
+4. Tap OK on the prompt message.
+5. Select "Trust"
+6. Now install the app from the .apk file
+
 
 ### Tech Stack:
 
