@@ -215,7 +215,7 @@ class StaticData {
 
   static String selectedCountry = '';
   static TextEditingController selectedCity = TextEditingController();
-  static Set<Marker> markers = Set();
+  static Map<String, dynamic> markerDetails = {};
   static SafeStreetUser currentUser =
       SafeStreetUser('', '', '', '', '', '', '', '');
 }
